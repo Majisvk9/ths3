@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topor Collection - The Moment Shop</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  font-family:Poppins;
+  margin:0;
+  background:#f9f9f9;
+}
+
+header{
+  text-align:center;
+  padding:20px;
+  background:#b32d2e;
+  color:#fff;
+}
+
+.sort-box{
+  text-align:center;
+  margin:20px;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  padding:20px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.product{
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  padding:15px;
+  text-align:center;
+}
+
+.product img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.price{
+  font-size:18px;
+  color:#b32d2e;
+  font-weight:600;
+  margin:10px 0;
+}
+
+.whatsapp-btn{
+  display:inline-block;
+  background:#25D366;
+  color:#fff;
+  padding:10px 15px;
+  text-decoration:none;
+  border-radius:5px;
+  margin-top:10px;
+}
+
+.whatsapp-btn:hover{
+  background:#1ebe5d;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>Sholapith Topor Collection</h2>
+</header>
+
+<div class="sort-box">
+Sort By Price:
+<select onchange="sortProducts(this.value)">
+<option value="default">Default</option>
+<option value="low">Low to High</option>
+<option value="high">High to Low</option>
+</select>
+</div>
+
+<div class="products" id="productList">
+
+<div class="product" data-price="399">
+<img src="../images/topor1.jpg">
+<h4>Classic Bengali Topor</h4>
+<div class="price">₹399</div>
+<a class="whatsapp-btn" 
+href="https://wa.me/919999999999?text=I want to buy Classic Bengali Topor - ₹399" 
+target="_blank">Buy on WhatsApp</a>
+</div>
+
+<div class="product" data-price="499">
+<img src="../images/topor2.jpg">
+<h4>Premium Wedding Topor</h4>
+<div class="price">₹499</div>
+<a class="whatsapp-btn" 
+href="https://wa.me/919999999999?text=I want to buy Premium Wedding Topor - ₹499" 
+target="_blank">Buy on WhatsApp</a>
+</div>
+
+<div class="product" data-price="599">
+<img src="../images/topor3.jpg">
+<h4>Royal Designer Topor</h4>
+<div class="price">₹599</div>
+<a class="whatsapp-btn" 
+href="https://wa.me/919999999999?text=I want to buy Royal Designer Topor - ₹599" 
+target="_blank">Buy on WhatsApp</a>
+</div>
+
+<div class="product" data-price="299">
+<img src="../images/topor4.jpg">
+<h4>Simple Traditional Topor</h4>
+<div class="price">₹299</div>
+<a class="whatsapp-btn" 
+href="https://wa.me/919999999999?text=I want to buy Simple Traditional Topor - ₹299" 
+target="_blank">Buy on WhatsApp</a>
+</div>
+
+</div>
+
+<script>
+function sortProducts(order){
+let container = document.getElementById("productList");
+let items = Array.from(container.children);
+
+items.sort((a,b)=>{
+let priceA = Number(a.dataset.price);
+let priceB = Number(b.dataset.price);
+
+if(order=="low") return priceA - priceB;
+if(order=="high") return priceB - priceA;
+return 0;
+});
+
+container.innerHTML="";
+items.forEach(item=>container.appendChild(item));
+}
+</script>
+
+</body>
+</html>
